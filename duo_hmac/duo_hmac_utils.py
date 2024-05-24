@@ -1,4 +1,7 @@
+import email.utils
 import json
+
+from typing import Protocol
 
 
 def prepare_parameters(parameters: dict, params_go_in_body: bool) -> tuple:
@@ -62,3 +65,13 @@ def extract_x_duo_headers(in_headers: dict[str, str]) -> dict[str, str]:
      return {}
 
   return {key: value for (key, value) in in_headers.items() if key.lower().startswith('x-duo')}
+
+
+class DateStringProvider(Protocol):
+  def get_rfc_2822_date_string(self) -> str:
+    ...
+
+
+class UTCNowDateStringProvider(DateStringProvider):
+  def get_rfc_2822_date_string(self) -> str:
+    return email.utils.formatdate()
