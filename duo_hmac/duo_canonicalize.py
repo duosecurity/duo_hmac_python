@@ -8,7 +8,7 @@ def generate_canonical_string(date_string: str,
                               api_path: str, 
                               qs_parameters: dict[bytes, list[bytes]],
                               body: str,
-                              duo_headers) -> str:
+                              duo_headers: dict[str, str]) -> str:
   """ 
   Create the "canonical string" of the request:
     Date string in RFC 2822 format
@@ -54,7 +54,7 @@ def canonicalize_body(body: str) -> str:
 
 
 def canonicalize_x_duo_headers(duo_headers: dict[str, str]) -> str:
-  """  docstring """
+  """ Canonicalize the x-duo headers by joining everything together and hashing it """
   if duo_headers is None:
     duo_headers = {}
     
