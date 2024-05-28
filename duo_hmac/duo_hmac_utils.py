@@ -4,7 +4,10 @@ import json
 from typing import Protocol
 
 
-def prepare_parameters(parameters: dict, params_go_in_body: bool) -> tuple:
+def prepare_parameters(
+      parameters: dict,
+      params_go_in_body: bool
+    ) -> tuple[dict[bytes, list[bytes]], str]:
     """ 
     Prepare the parameters: JSONize them if they'll go in the body, 
     or normalize them if they'll go in the query string.
