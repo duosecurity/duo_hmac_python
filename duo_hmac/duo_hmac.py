@@ -4,7 +4,7 @@ import hmac
 import urllib.parse
 
 
-from . import duo_canonicalize, duo_hmac_utils
+from . import duo_canonicalize, duo_hmac_utils, duo_hmac_validation
 
 class DuoHmac():
   def __init__(self, ikey: str, skey: str, api_host: str, date_string_provider: duo_hmac_utils.DateStringProvider = None):
@@ -23,13 +23,14 @@ class DuoHmac():
       parameters: dict = None,
       in_headers: dict[str, str] = None
     ) -> tuple[str, str, dict[str, str]]:
-    # TODO run some validation on all these parameters (particularly the headers)
     """
     Use the provided request components and calculate
       - The final url (host + path + query string)
       - The request body (if any)
       - The request headers (including the authorization header per Duo's HMAC specification)
     """
+    duo_hmac_validation.validate_headers(in_headers)
+
     # We'll be manipulating the headers, so make a copy of them first just in case
     if in_headers is None:
       in_headers = {}
