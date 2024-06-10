@@ -14,7 +14,7 @@ def get_arguments(parser):
 
   args_dict = {
     'method': args.m.upper(),
-    'path': args.a.lower(),
+    'path': args.a,
     'params': {p[0]: p[1] for p in [item.split('=') for item in args.p]},
   }
 
@@ -24,7 +24,11 @@ def get_arguments(parser):
 def main():
   ikey, skey, host = cc._read_config()
 
-  parser = argparse.ArgumentParser()
+  parser = argparse.ArgumentParser(
+    prog="Duo API call generator for curl",
+    description="Generates a curl call for a Duo API call.  Provide the HTTP method (default 'get'), the API path, and the call parameters as key=value pairs",
+    epilog="CLI flags: -m <HTTP method> -a <api path> -p key1=value1 key2=value2 ..."
+  )
   args_dict = get_arguments(parser)
 
   hmac = duo_hmac.DuoHmac(ikey, skey, host)
