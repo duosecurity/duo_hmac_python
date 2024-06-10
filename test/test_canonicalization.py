@@ -1,3 +1,6 @@
+# SPDX-FileCopyrightText: 2024 Cisco Systems, Inc. and/or its affiliates
+# SPDX-License-Identifier: MIT
+
 import json
 import random
 import unittest
