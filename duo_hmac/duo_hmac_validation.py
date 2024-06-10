@@ -1,3 +1,6 @@
+# SPDX-FileCopyrightText: 2024 Cisco Systems, Inc. and/or its affiliates
+# SPDX-License-Identifier: MIT
+
 def validate_headers(headers: dict[str, str]):
   if headers is None:
     headers = {}

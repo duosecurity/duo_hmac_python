@@ -1,3 +1,6 @@
+# SPDX-FileCopyrightText: 2024 Cisco Systems, Inc. and/or its affiliates
+# SPDX-License-Identifier: MIT
+
 import unittest
 
 from duo_hmac import duo_hmac_validation
