@@ -51,7 +51,7 @@ def canonicalize_parameters(parameters: dict[bytes, list[bytes]]) -> str:
 
 def canonicalize_body(body: str) -> str:
   """ Canonicalize the body by encoding and hashing it """
-  if body == None:
+  if body is None:
     body = ''
   return hashlib.sha512(body.encode('utf-8')).hexdigest()
 

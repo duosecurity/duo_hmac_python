@@ -150,7 +150,6 @@ class TestExtractXDuoHeaders(unittest.TestCase):
       'xduo': 'xduo',
       'duo-foo': 'foo',
       'x-duo-x-duo-foo': 'foo',
-      'duo-foo': 'x-duo-foo',
       'foo-x-duo': 'foo',
     }
 

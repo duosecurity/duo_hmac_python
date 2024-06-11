@@ -63,7 +63,7 @@ def _read_config():
   if not cp.sections():
     raise FileNotFoundError(f"Config file {CONFIG_FILE} seems to be missing or empty.")
 
-  if not 'duo' in cp.sections():
+  if 'duo' not in cp.sections():
     raise ValueError(f"Config file {CONFIG_FILE} seems to be missing a '{DUO_SECTION}' section.")
   
   ikey = cp[DUO_SECTION][IKEY_KEY]
