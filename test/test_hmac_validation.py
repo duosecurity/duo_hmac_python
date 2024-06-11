@@ -37,7 +37,7 @@ class TestValidateHeaders(unittest.TestCase):
   def test_bad_key_or_value(self):
     for test_name, input in self.bad_key_or_value_test_cases:
       with self.subTest(test_name):
-        with self.assertRaises(ValueError) as ve:
+        with self.assertRaises(ValueError):
           duo_hmac_validation.validate_headers(input)
   
   def test_duplicate_detection(self):
