@@ -37,14 +37,15 @@ class TestHmac(unittest.TestCase):
         self.assertEqual(expected_body, actual_body)
         self.assertDictEqual(expected_headers, actual_headers)
 
-    # For all tests, the expected Authorization header was calculated using duo_client_python
+    # For all tests, the expected Authorization header was calculated using
+    # duo_client_python
 
     def test_get_no_params_no_headers(self):
         expected_uri = f"{API_HOST}{API_PATH}"
         expected_body = None
         expected_headers = {
             "x-duo-date": DATE_STRING,
-            "Authorization": "Basic RElBQkNERUZHSElKS0xNTk9QUVI6YzQ1NDYzOWQ3NWI0ZTNkOTliOGIxZDVlNDFjZDdiYjJkMmQ4YmE1NWY2ODExZjc4NmRmYjBlZGQ0ZmFjZDJmM2E1ZTZkNmM4MzdmMzFmNjgyNjcwNjMyNWI0ZWQ3ZGNkYzVmMTExNjQ5NDhlNTdhNzAzMmE1MjQ5OTBlMDE1ODM=",
+            "Authorization": "Basic RElBQkNERUZHSElKS0xNTk9QUVI6YzQ1NDYzOWQ3NWI0ZTNkOTliOGIxZDVlNDFjZDdiYjJkMmQ4YmE1NWY2ODExZjc4NmRmYjBlZGQ0ZmFjZDJmM2E1ZTZkNmM4MzdmMzFmNjgyNjcwNjMyNWI0ZWQ3ZGNkYzVmMTExNjQ5NDhlNTdhNzAzMmE1MjQ5OTBlMDE1ODM=",  # noqa: E501
         }
 
         self.assert_components(
@@ -57,7 +58,7 @@ class TestHmac(unittest.TestCase):
         expected_headers = {
             "x-duo-date": DATE_STRING,
             "Content-type": "application/json",
-            "Authorization": "Basic RElBQkNERUZHSElKS0xNTk9QUVI6MTJhMDVkNzgzYjJlNThlMzZmMzdkZjhhNjkwNzgzNTQ5NmZiZTIwZmIzZDA0YjE1MDM2YzgyYjE2OTRmYzU4ZDFjMDQ1MWI5MzdmYjliYTZlN2MyYjQ0ZDg5YjQ3M2FmNzA4MTY2MTgzZDIxNmFlYTEzZTUyNzQyYTU3ZjIzOWY=",
+            "Authorization": "Basic RElBQkNERUZHSElKS0xNTk9QUVI6MTJhMDVkNzgzYjJlNThlMzZmMzdkZjhhNjkwNzgzNTQ5NmZiZTIwZmIzZDA0YjE1MDM2YzgyYjE2OTRmYzU4ZDFjMDQ1MWI5MzdmYjliYTZlN2MyYjQ0ZDg5YjQ3M2FmNzA4MTY2MTgzZDIxNmFlYTEzZTUyNzQyYTU3ZjIzOWY=",  # noqa: E501
         }
 
         self.assert_components(
@@ -69,7 +70,7 @@ class TestHmac(unittest.TestCase):
         expected_body = None
         expected_headers = {
             "x-duo-date": DATE_STRING,
-            "Authorization": "Basic RElBQkNERUZHSElKS0xNTk9QUVI6ODhmZTgwZjNiMjQyYjk5MmY0YjMwMTQwOGQ1MjRhODg2Mjc0ZDNlZDBjNGM3YmQxODRlMWI0ZmYzNzhlNjhlYTA1ZDk0MzNjMDk5MzgwNzhjNDk1MTdhNmM0MjY0Yzk1MGJlOWZmNWNjMjhhZDJkNDQ4Y2VhMjRiYzkzODg3Y2E=",
+            "Authorization": "Basic RElBQkNERUZHSElKS0xNTk9QUVI6ODhmZTgwZjNiMjQyYjk5MmY0YjMwMTQwOGQ1MjRhODg2Mjc0ZDNlZDBjNGM3YmQxODRlMWI0ZmYzNzhlNjhlYTA1ZDk0MzNjMDk5MzgwNzhjNDk1MTdhNmM0MjY0Yzk1MGJlOWZmNWNjMjhhZDJkNDQ4Y2VhMjRiYzkzODg3Y2E=",  # noqa: E501
         }
 
         in_params = {"foo": "bar"}
@@ -83,7 +84,7 @@ class TestHmac(unittest.TestCase):
         expected_headers = {
             "x-duo-date": DATE_STRING,
             "Content-type": "application/json",
-            "Authorization": "Basic RElBQkNERUZHSElKS0xNTk9QUVI6NjQzNzcwYWYzMTAwNmM1ODRhNzU4ZDkyNjI1MGU0NmE5MGQ3OTEwMGQyMWY3YTAzMTNjM2U3N2Q2NGZhM2M1ZDJjOTRlMmM5MDgxYTJiNjUzNDNjYzNkNWYyZWQyMWY3MzAwZWE1MGIwMDY0MGNiMTc2MGYzMjMxOTIzMDdkMzc=",
+            "Authorization": "Basic RElBQkNERUZHSElKS0xNTk9QUVI6NjQzNzcwYWYzMTAwNmM1ODRhNzU4ZDkyNjI1MGU0NmE5MGQ3OTEwMGQyMWY3YTAzMTNjM2U3N2Q2NGZhM2M1ZDJjOTRlMmM5MDgxYTJiNjUzNDNjYzNkNWYyZWQyMWY3MzAwZWE1MGIwMDY0MGNiMTc2MGYzMjMxOTIzMDdkMzc=",  # noqa: E501
         }
 
         in_params = {"foo": "bar"}
@@ -99,7 +100,7 @@ class TestHmac(unittest.TestCase):
             "x-duo-bar": "foo",
             "non-duo-bar": "duo",
             "x-duo-date": DATE_STRING,
-            "Authorization": "Basic RElBQkNERUZHSElKS0xNTk9QUVI6ZDQ2NTU2NzI2ODAwNDE1ZGM3OGNlZmMzZmI0ZTExZGNmM2VlMTM0MjkwNGYyNzZlZDVjOGUzNDI3ODc4YmQ1Mzc2ZWE2YzU1NTFiOTBiZjcwN2ZhYjUzZjZmMWQyMGExMTQ4OTg4OTg3MDVkMjgyNjg4MjRlZGQwYmU1ZjFkNTM=",
+            "Authorization": "Basic RElBQkNERUZHSElKS0xNTk9QUVI6ZDQ2NTU2NzI2ODAwNDE1ZGM3OGNlZmMzZmI0ZTExZGNmM2VlMTM0MjkwNGYyNzZlZDVjOGUzNDI3ODc4YmQ1Mzc2ZWE2YzU1NTFiOTBiZjcwN2ZhYjUzZjZmMWQyMGExMTQ4OTg4OTg3MDVkMjgyNjg4MjRlZGQwYmU1ZjFkNTM=",  # noqa: E501
         }
 
         in_params = {"foo": "bar", "one": "1", "bool": "true"}
@@ -126,7 +127,7 @@ class TestHmac(unittest.TestCase):
             "non-duo-bar": "duo",
             "x-duo-date": DATE_STRING,
             "Content-type": "application/json",
-            "Authorization": "Basic RElBQkNERUZHSElKS0xNTk9QUVI6ZGVmN2I3MzU5YjAzOTk1NDNiNjFkM2QxYTQyNTJjMTkwOGViNDg2MDM5MTY4YWE3ZDFjOTM1NDVmMDUyZTEyMTA2MmU0ZDBkM2NhZTgwZjBmMTI1ZGM0OTdjNDNjNTNiNjJjOWRiNThjYWNkMjEzOTRhM2IxN2FkOTcyZTM3OTM=",
+            "Authorization": "Basic RElBQkNERUZHSElKS0xNTk9QUVI6ZGVmN2I3MzU5YjAzOTk1NDNiNjFkM2QxYTQyNTJjMTkwOGViNDg2MDM5MTY4YWE3ZDFjOTM1NDVmMDUyZTEyMTA2MmU0ZDBkM2NhZTgwZjBmMTI1ZGM0OTdjNDNjNTNiNjJjOWRiNThjYWNkMjEzOTRhM2IxN2FkOTcyZTM3OTM=",  # noqa: E501
         }
 
         in_params = {"foo": "bar", "one": "1", "bool": "true"}
@@ -150,7 +151,7 @@ class TestHmac(unittest.TestCase):
         expected_headers = {
             "x-duo-date": DATE_STRING,
             "Content-type": "application/json",
-            "Authorization": "Basic RElBQkNERUZHSElKS0xNTk9QUVI6NjhjYWI2YTQyYmUyMTZhMGUwNTU3NzJlZDhkODg3MGIzODNmYzk4NmVlNGJkN2I5MjM0Njg5ZTIzOWJlNjc3YzhlZGY2MWUzM2VhZGRkODNlMmI5NDE0Yzk4ZmYzMGJmY2EwYmYyZTFmNDQ4MzEwNzRmNWM0NzRiZjRhZjlmZDc=",
+            "Authorization": "Basic RElBQkNERUZHSElKS0xNTk9QUVI6NjhjYWI2YTQyYmUyMTZhMGUwNTU3NzJlZDhkODg3MGIzODNmYzk4NmVlNGJkN2I5MjM0Njg5ZTIzOWJlNjc3YzhlZGY2MWUzM2VhZGRkODNlMmI5NDE0Yzk4ZmYzMGJmY2EwYmYyZTFmNDQ4MzEwNzRmNWM0NzRiZjRhZjlmZDc=",  # noqa: E501
         }
 
         in_params = {"foo": "bar", "one": "1", "bool": "true"}
@@ -158,7 +159,8 @@ class TestHmac(unittest.TestCase):
             HTTP_POST, in_params, None, expected_uri, expected_body, expected_headers
         )
 
-    # As written, non-string parameters don't work for GET calls.  This is arguably a bug but test the existing behavior for now
+    # As written, non-string parameters don't work for GET calls.  This is
+    # arguably a bug but test the existing behavior for now
     def test_unsupported_get_parameter_types(self):
         in_params1 = {
             "foo": "bar",

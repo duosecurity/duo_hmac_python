@@ -37,7 +37,8 @@ class DuoHmac:
         Use the provided request components and calculate
           - The final url (host + path + query string)
           - The request body (if any)
-          - The request headers (including the authorization header per Duo's HMAC specification)
+          - The request headers (including the authorization
+            header per Duo's HMAC specification)
         """
         duo_hmac_validation.validate_headers(in_headers)
 
@@ -50,7 +51,8 @@ class DuoHmac:
         # We need the request timestamp in RFC 2822 format
         date_string = self.date_string_provider.get_rfc_2822_date_string()
 
-        # Duo does not currently support splitting parameters between the query string and body.
+        # Duo does not currently support splitting parameters
+        # between the query string and body.
         # Put parameters in the correct place depending on the http method
         # (body for POST, PUT, and PATCH, query string otherwise)
         params_go_in_body = http_method.upper() in ("POST", "PUT", "PATCH")
@@ -75,7 +77,8 @@ class DuoHmac:
         if query_string:
             uri = f"{uri}?{query_string}"
 
-        # Assemble final headers from input headers, authorization header, and content-type header
+        # Assemble final headers from input headers, authorization header, and
+        # content-type header
         out_headers = dict(in_headers)
         out_headers["Authorization"] = authn_header
         if params_go_in_body:
@@ -120,7 +123,10 @@ class DuoHmac:
         return f"Basic {b64}"
 
     def _sign_canonical_string(self, canon_string: str) -> hmac.HMAC:
-        """Generate the SHA512 signature of the canonical string using the SKEY as the shared secret"""
+        """
+        Generate the SHA512 signature of the canonical string
+        using the SKEY as the shared secret
+        """
         skey_bytes = self.skey.encode("utf-8")
         canon_bytes = canon_string.encode("utf-8")
 

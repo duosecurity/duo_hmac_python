@@ -28,7 +28,8 @@ def validate_headers(headers: dict[str, str]):
         if key_lower.startswith("x-duo"):
             if key_lower in headers_seen:
                 problems.append(
-                    f"Duplicate x-duo headers are not supported, {key_lower} is duplicated."
+                    f"Duplicate x-duo headers are not supported, \
+                      {key_lower} is duplicated."
                 )
             else:
                 headers_seen.add(key_lower)

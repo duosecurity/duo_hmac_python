@@ -105,7 +105,8 @@ class TestNormalizeParameters(unittest.TestCase):
         actual = duo_hmac_utils.normalize_parameters(test_input)
         self.assertDictEqual(expected, actual)
 
-    # None of these make any sense, but they work!  Hopefully we can break them all some day by enforcing sensible typing
+    # None of these make any sense, but they work!  Hopefully we can break
+    # them all some day by enforcing sensible typing
     edge_case_test_cases = [
         ("None 1-item list value", {"string": [None]}, {b"string": [None]}),
         (

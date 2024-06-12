@@ -29,7 +29,8 @@ def prepare_parameters(
 def jsonize_parameters(parameters: dict) -> str:
     """Turn a parameter dictionary into a JSON string"""
     if parameters is None:
-        # Is this the best choice?  Should we return None instead (or allow json.dumps to return None)?
+        # Is this the best choice?  Should we return None instead (or allow
+        # json.dumps to return None)?
         parameters = {}
 
     return json.dumps(parameters, sort_keys=True, separators=(",", ":"))
