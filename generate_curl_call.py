@@ -35,8 +35,12 @@ def main():
 
     parser = argparse.ArgumentParser(
         prog="Duo API call generator for curl",
-        description="Generates a curl call for a Duo API call.  Provide the HTTP method (default 'get'), the API path, and the call parameters as key=value pairs",
-        epilog="CLI flags: -m <HTTP method> -a <api path> -p key1=value1 key2=value2 ...",
+        description="""Generates a curl call for a Duo API call.
+                       Provide the HTTP method (default 'get'),
+                       the API path, and the call parameters as
+                       key=value pairs""",
+        epilog="""CLI flags: -m <HTTP method> -a <api path>
+                  -p key1=value1 key2=value2 ...""",
     )
     args_dict = get_arguments(parser)
 
