@@ -27,14 +27,10 @@ EMPTY_JSON_HASH = "27c74670adb75075fad058d5ceaf7b20c4e7786c83bae8a32f626f9782af3
 #   an empty line since there are no query string parameters
 #   the sha512 of the empty string since there is no body
 #   the sha512 of the empty string since there are no headers
-EXPECTED_GET_NO_PARAMS = f"{DATE_STRING}\n{HTTP_GET}\n{API_HOST}\n \
-                           {API_PATH}\n{EMPTY_STRING}\n{EMPTY_STRING_HASH}\n \
-                           {EMPTY_STRING_HASH}"
+EXPECTED_GET_NO_PARAMS = f"{DATE_STRING}\n{HTTP_GET}\n{API_HOST}\n{API_PATH}\n{EMPTY_STRING}\n{EMPTY_STRING_HASH}\n{EMPTY_STRING_HASH}"  # noqa: E501
 # For POST with no parameters, empty body, no headers, the main difference
 # is line 6, where we expect the hash of empty json
-EXPECTED_POST_NO_PARAMS = f"{DATE_STRING}\n{HTTP_POST}\n{API_HOST}\n \
-                            {API_PATH}\n{EMPTY_STRING}\n{EMPTY_JSON_HASH}\n \
-                            {EMPTY_STRING_HASH}"
+EXPECTED_POST_NO_PARAMS = f"{DATE_STRING}\n{HTTP_POST}\n{API_HOST}\n{API_PATH}\n{EMPTY_STRING}\n{EMPTY_JSON_HASH}\n{EMPTY_STRING_HASH}"  # noqa: E501
 
 
 class TestGenerateCanonicalStringBasics(unittest.TestCase):
