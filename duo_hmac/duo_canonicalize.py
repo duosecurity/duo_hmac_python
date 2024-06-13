@@ -4,15 +4,17 @@
 import hashlib
 import urllib.parse
 
+from typing import Dict, List, Optional
+
 
 def generate_canonical_string(
     date_string: str,
     http_method: str,
     api_host: str,
     api_path: str,
-    qs_parameters: dict[bytes, list[bytes]],
-    body: str,
-    duo_headers: dict[str, str],
+    qs_parameters: Optional[Dict[bytes, List[bytes]]],
+    body: Optional[str],
+    duo_headers: Optional[Dict[str, str]],
 ) -> str:
     """
     Create the "canonical string" of the request:
@@ -36,7 +38,7 @@ def generate_canonical_string(
     return "\n".join(canon_parts)
 
 
-def canonicalize_parameters(parameters: dict[bytes, list[bytes]]) -> str:
+def canonicalize_parameters(parameters: Optional[Dict[bytes, List[bytes]]]) -> str:
     """Canonicalize the parameters by sorting and formatting them"""
     if parameters is None:
         return ""
@@ -52,14 +54,14 @@ def canonicalize_parameters(parameters: dict[bytes, list[bytes]]) -> str:
     return "&".join(args)
 
 
-def canonicalize_body(body: str) -> str:
+def canonicalize_body(body: Optional[str]) -> str:
     """Canonicalize the body by encoding and hashing it"""
     if body is None:
         body = ""
     return hashlib.sha512(body.encode("utf-8")).hexdigest()
 
 
-def canonicalize_x_duo_headers(duo_headers: dict[str, str]) -> str:
+def canonicalize_x_duo_headers(duo_headers: Optional[Dict[str, str]]) -> str:
     """Canonicalize the x-duo headers by joining everything together and hashing it"""
     if duo_headers is None:
         duo_headers = {}

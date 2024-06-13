@@ -6,6 +6,8 @@ import hashlib
 import hmac
 import urllib.parse
 
+from typing import Any, Dict, List, Optional, Tuple
+
 
 from . import duo_canonicalize, duo_hmac_utils, duo_hmac_validation
 
@@ -16,7 +18,7 @@ class DuoHmac:
         ikey: str,
         skey: str,
         api_host: str,
-        date_string_provider: duo_hmac_utils.DateStringProvider = None,
+        date_string_provider: Optional[duo_hmac_utils.DateStringProvider] = None,
     ):
         self.ikey = ikey
         self.skey = skey
@@ -30,9 +32,9 @@ class DuoHmac:
         self,
         http_method: str,
         api_path: str,
-        parameters: dict = None,
-        in_headers: dict[str, str] = None,
-    ) -> tuple[str, str, dict[str, str]]:
+        parameters: Optional[Dict[str, Any]] = None,
+        in_headers: Optional[Dict[str, str]] = None,
+    ) -> Tuple[str, str, Dict[str, str]]:
         """
         Use the provided request components and calculate
           - The final url (host + path + query string)
@@ -91,9 +93,9 @@ class DuoHmac:
         date_string: str,
         http_method: str,
         api_path: str,
-        qs_parameters: dict[bytes, list[bytes]],
-        body: str,
-        x_duo_headers: dict[str, str],
+        qs_parameters: Optional[Dict[bytes, List[bytes]]],
+        body: Optional[str],
+        x_duo_headers: Optional[Dict[str, str]],
     ) -> str:
         """
         Calculate the authentication header from the request components

@@ -1,8 +1,10 @@
 # SPDX-FileCopyrightText: 2024 Cisco Systems, Inc. and/or its affiliates
 # SPDX-License-Identifier: MIT
 
+from typing import Dict, Optional
 
-def validate_headers(headers: dict[str, str]):
+
+def validate_headers(headers: Optional[Dict[str, str]]) -> None:
     if headers is None:
         headers = {}
 
