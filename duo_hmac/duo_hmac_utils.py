@@ -4,12 +4,14 @@
 import email.utils
 import json
 
-from typing import Protocol
+from typing import Any, Dict, List, Optional, Protocol, Tuple
 
 
+# These type parameters are not correct, but the actual permissible
+# types are far too complicated.  This will be cleaned up later.
 def prepare_parameters(
-    parameters: dict, params_go_in_body: bool
-) -> tuple[dict[bytes, list[bytes]], str]:
+    parameters: Optional[Dict[str, Any]], params_go_in_body: bool
+) -> Tuple[Dict[bytes, List[bytes]], str]:
     """
     Prepare the parameters: JSONize them if they'll go in the body,
     or normalize them if they'll go in the query string.
@@ -26,7 +28,7 @@ def prepare_parameters(
     return (qs_parameters, body)
 
 
-def jsonize_parameters(parameters: dict) -> str:
+def jsonize_parameters(parameters: Optional[Dict[str, Any]]) -> str:
     """Turn a parameter dictionary into a JSON string"""
     if parameters is None:
         # Is this the best choice?  Should we return None instead (or allow
@@ -36,7 +38,8 @@ def jsonize_parameters(parameters: dict) -> str:
     return json.dumps(parameters, sort_keys=True, separators=(",", ":"))
 
 
-def normalize_parameters(parameters: dict) -> dict[bytes, list[bytes]]:
+def normalize_parameters(
+        parameters: Optional[Dict[str, Any]]) -> Dict[bytes, List[bytes]]:
     """
     Return copy of params with everything stringified and listified
     """
@@ -68,7 +71,7 @@ def normalize_parameters(parameters: dict) -> dict[bytes, list[bytes]]:
     )
 
 
-def extract_x_duo_headers(in_headers: dict[str, str]) -> dict[str, str]:
+def extract_x_duo_headers(in_headers: Optional[Dict[str, str]]) -> Dict[str, str]:
     """Extract all headers that start with 'x-duo' from the provided input headers"""
     if in_headers is None:
         return {}
