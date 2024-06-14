@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools >= 70.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "duo_hmac"
+version = "0.1.0"
+dependencies = []
+requires-python = ">=3.8"
+authors = [
+  {name = "Duo Security"}
+]
+maintainers = [
+  {name = "Duo Security"}
+]
+description = "An implementation of the Duo Security API authentication scheme."
+readme = "README.md"
+keywords = ["duo", "hmac"]
+classifiers = [
+  "Development Status - 4 - Beta",
+  "Intended Audience :: Developers",
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.8",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Topic :: Security :: Cryptography",
+]
+
+[project.urls]
+Repository = "https://github.com/duosecurity/duo_hmac_python"
+"Bug Tracker" = "https://github.com/duosecurity/duo_hmac_python/issues"
