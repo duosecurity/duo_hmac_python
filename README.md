@@ -1,6 +1,6 @@
 # Overview
 
-This repository provides an implementation of Duo's current API authentication scheme independent of any HTTP/REST client.
+This repository provides an implementation of Duo's current API authentication scheme independent of any HTTP/REST client.  If you want a full Python client for the Duo API, see [duo_client_python](https://github.com/duosecurity/duo_client_python) instead.
 
 Currently this supports the Auth API, Admin API, and Accounts API.
 
