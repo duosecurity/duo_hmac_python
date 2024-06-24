@@ -1,10 +1,10 @@
-name: Python build
+name: Python build and release
 on:
   workflow_dispatch:
 
 jobs:
   build:
-    name: Python build
+    name: Python build and release
     runs-on: ubuntu-latest
 
     steps:
