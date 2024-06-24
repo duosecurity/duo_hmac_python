@@ -1,5 +1,6 @@
 build >= 1.2.0
+cyclonedx-bom == 3.11.7
 flake8 >= 7.0.0
 requests >= 2.32.0
 setuptools >= 70.0.0
-cyclonedx-bom == 3.11.7
+twine >= 5.1.0
